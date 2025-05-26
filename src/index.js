@@ -39,10 +39,17 @@ app.listen(3000, async () => {
   // const tweet = await tweetRepo.create({content: 'Tweet with comment Schema'});
   // console.log(tweet);
   // const comment = await Comment.create({content: 'new comment on the tweet'});
-  // tweet.comments.push(comment._id);
+  // tweet.comments.push(comment);
   // await tweet.save();
 
-  const tweet = await tweetRepo.getWithComments('6832e0a1afb43610e17f7209');
+  // const tweet = await tweetRepo.getWithComments('68345a1be298799dbe0aa50f');
+
+  // const tweet = await tweetRepo.getAll(0 , 3);
+  // // console.log(tweet);
+  // console.log(tweet[0].contentWithEmail);
+
+  
+  const tweet = await tweetRepo.create({content: 'Tweet for checking pre hooks', userEmail: 'hooks@.com'});
   console.log(tweet);
 
 });

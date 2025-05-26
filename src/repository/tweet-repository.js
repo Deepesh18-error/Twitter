@@ -21,7 +21,7 @@ class TweetRepository {
  
   async getWithComments(id) {
     try{
-        const tweet = await Tweet.findById(id).populate({path: 'comments'}); // populate will replace the comment id with the actual comment object
+        const tweet = await Tweet.findById(id).populate({path: 'comments'}).lean(); // populate will replace the comment id with the actual comment object
         return tweet;
     } catch (error) {
         console.log(error);
@@ -44,7 +44,15 @@ class TweetRepository {
     } catch (error) {
         console.log(error);
     }  
- } 
+ }
+    async getAll(offset , limit) {
+        try{
+            const tweets = await Tweet.find().skip(offset).limit(limit); // sort by createdAt in descending order
+            return tweets;
+        } catch (error) {
+            console.log(error);
+        }  
+    } 
 }
 
 
