@@ -28,14 +28,7 @@ class TweetRepository {
     }
 }
 
-  async update(tweetId , data ) {
-    try{
-        const tweet = await Tweet.findByIdAndUpdate(tweetId , data , {new: true});  // new: true returns the updated document last recent update NOT old one
-        return tweet;
-    } catch (error) {
-        console.log(error);
-    }  
- } 
+
 
   async destroy(id) {
     try{
