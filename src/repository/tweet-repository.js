@@ -1,6 +1,11 @@
 import Tweet from '../models/tweet.js';
+import CurdRepository from './crud-repository.js';
 
-class TweetRepository {
+
+class TweetRepository extends CurdRepository {
+    constructor() {
+        super(Tweet);
+    }
   async create(tweetData) {
     try{
         const tweet = await Tweet.create(tweetData);
@@ -10,14 +15,6 @@ class TweetRepository {
     }  
  } 
 
-  async get(id) {
-    try{
-        const tweet = await Tweet.findById(id);
-        return tweet;
-    } catch (error) {
-        console.log(error);
-    }  
- } 
  
   async getWithComments(id) {
     try{
@@ -29,15 +26,6 @@ class TweetRepository {
 }
 
 
-
-  async destroy(id) {
-    try{
-        const tweet = await Tweet.findByIdAndRemove(id);
-        return tweet;
-    } catch (error) {
-        console.log(error);
-    }  
- }
     async getAll(offset , limit) {
         try{
             const tweets = await Tweet.find().skip(offset).limit(limit); // sort by createdAt in descending order
