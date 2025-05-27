@@ -6,6 +6,15 @@ class LikeRepository extends CurdRepository {
         super(Like);
     }
 
+    async findByUserAndLikeable(data){
+        try{
+            const like = await Like.findOne(data);
+            return like;
+        } catch (error) {
+            throw new Error("Something went wrong in LikeRepository");
+        }
+    }
+
 }
 
 export default LikeRepository;

@@ -3,8 +3,9 @@ import bodyParser from 'body-parser';
 
 import { connect } from './config/database.js';
 
-import { HashtagRepository, TweetRepository } from './repository/index.js';
+import { HashtagRepository, TweetRepository , UserRepository , LikeRepository} from './repository/index.js';
 import service from './services/tweet-service.js';
+import LikeService from './services/like-service.js';
 
 import apiRoutes from './routes/index.js';
 
@@ -54,7 +55,18 @@ app.listen(3000, async () => {
   // });
   // console.log(tweet);
 
-   
+
+  const userRepo = new UserRepository();
+  const tweetRepo = new TweetRepository();
+
+  const tweet = await tweetRepo.getAll(0 , 10);
+
+  const user = await userRepo.getAll();
+
+  const likeService = new LikeService();
+  await likeService.toggleLike(tweet[0]._id, 'Tweet', user[0].id)
+
+
 });
  
 
