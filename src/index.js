@@ -1,9 +1,9 @@
-const express = require('express');
+import express from 'express'; 
 
-const connect = require('./config/database');
+import { connect } from './config/database.js';
 
-const {TweetRepository , HashtagRepository} = require('./repository/index');
-const TweetService = require('./services/tweet-service');
+import { HashtagRepository, TweetRepository } from './repository/index.js';
+import service from './services/tweet-service.js';
 
 
 const app = express();
@@ -35,12 +35,17 @@ app.listen(3000, async () => {
   // const response = await repo.findByName(['C++', 'Backend']);
   // console.log(response);
 
-  let service = new TweetService();
-  const tweet = await service.create({
-    content: 'I am #lost and #failing to give my #best in #Codeforces',
-  })
-  console.log(tweet);
+  // let service = new TweetService();
+  // const tweet = await service.create({
+  //   content: 'I am #lost and #failing to give my #best in #Codeforces',
+  // })
+  // console.log(tweet);
 
+  let ser = new service();
+  const tweet = await ser.create({
+    content: 'Done with #refractor ?',
+  });
+  console.log(tweet);
 });
  
 
