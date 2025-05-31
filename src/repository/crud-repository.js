@@ -1,3 +1,5 @@
+import Tweet from "../models/tweet.js";
+
 class CurdRepository{
     constructor(model) {
         this.model = model;
@@ -8,7 +10,7 @@ class CurdRepository{
             const result = await this.model.create(data);
             return result;
         } catch (error) {
-            throw new Error("Something went wrong in CRUD repsitory");
+            throw error("Something went wrong in CRUD repsitory");
         }
     }
 
@@ -17,7 +19,7 @@ class CurdRepository{
             const result = await this.model.findByIdAndDelete(id);
             return result;
         } catch (error) {
-            throw new Error("Something went wrong in CRUD repsitory");
+            throw error("Something went wrong in CRUD repsitory");
         }
     }
 
@@ -26,7 +28,7 @@ class CurdRepository{
             const result = await this.model.findById(id);
             return result;
         } catch (error) {
-            throw new Error("Something went wrong in CRUD repsitory");
+            throw error("Something went wrong in CRUD repsitory");
         }
     }
 
@@ -35,7 +37,7 @@ class CurdRepository{
             const result = await this.model.find({});
             return result;
         } catch (error) {
-            throw new Error("Something went wrong in CRUD repsitory");
+           throw error("Something went wrong in CRUD repsitory");
         }
     }
 
@@ -45,7 +47,7 @@ class CurdRepository{
             return result;
         }
         catch (error) {
-            throw new Error("Something went wrong in CRUD repsitory");
+            throw error("Something went wrong in CRUD repsitory");
         }
     }
 
