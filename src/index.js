@@ -56,15 +56,15 @@ app.listen(3000, async () => {
   // console.log(tweet);
 
 
-  const userRepo = new UserRepository();
-  const tweetRepo = new TweetRepository();
+  // const userRepo = new UserRepository();
+  // const tweetRepo = new TweetRepository();
 
-  const tweet = await tweetRepo.getAll(0 , 10);
+  // const tweet = await tweetRepo.getAll(0 , 10);
 
-  const user = await userRepo.getAll();
+  // const user = await userRepo.getAll();
 
-  const likeService = new LikeService();
-  await likeService.toggleLike(tweet[0]._id, 'Tweet', user[0].id)
+  // const likeService = new LikeService();
+  // await likeService.toggleLike(tweet[0]._id, 'Tweet', user[0].id)
 
 
 });

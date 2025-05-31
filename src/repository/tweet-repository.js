@@ -18,7 +18,12 @@ class TweetRepository extends CurdRepository {
  
   async getWithComments(id) {
     try{
-        const tweet = await Tweet.findById(id).populate({path: 'comments'}).lean(); // populate will replace the comment id with the actual comment object
+         const tweet = await Tweet.findById(id).populate({
+                path: 'comments',
+                populate: {
+                    path: 'comments'
+                }
+            }).lean();
         return tweet;
     } catch (error) {
         console.log(error);
